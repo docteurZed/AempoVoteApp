@@ -89,29 +89,31 @@ new #[Layout('components.layouts.auth')] class extends Component {
     }
 }; ?>
 
-<div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Connectez vous')" :description="__('Entrez vos données pour vous connecter')" />
+<div class="flex flex-col gap-8">
+    <div class="text-center">
+        <h3 class="text-xl text-red-500 font-bold">Connectez vous</h3>
+        <p class="text-sm text-gray-400">Entrez vos données pour vous connecter</p>
+    </div>
+    {{-- <x-auth-header :title="__('')" :description="__('')" /> --}}
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form method="POST" wire:submit="login" class="flex flex-col gap-6">
+    <form method="POST" wire:submit="login" class="flex flex-col gap-8">
         <!-- Email Address -->
         <flux:input
             wire:model="email"
-            :label="__('Email')"
             type="email"
             required
             autofocus
             autocomplete="email"
-            placeholder="email@example.com"
+            placeholder="Adresse e-mail"
         />
 
         <!-- Password -->
         <div class="relative">
             <flux:input
                 wire:model="password"
-                :label="__('Mot de passe')"
                 type="password"
                 required
                 autocomplete="current-password"
@@ -119,9 +121,6 @@ new #[Layout('components.layouts.auth')] class extends Component {
                 viewable
             />
         </div>
-
-        <!-- Remember Me -->
-        <flux:checkbox wire:model="remember" :label="__('Se souvenir de moi')" />
 
         <div class="flex items-center justify-end">
             <flux:button variant="primary" type="submit" class="w-full" data-test="login-button">

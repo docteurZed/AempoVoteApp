@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Candidate\CandidatePersonalInfoController;
+use App\Http\Controllers\Candidate\DashboardController;
 use App\Http\Controllers\Member\VoteController;
 use App\Http\Controllers\Public\AboutController;
 use App\Http\Controllers\Public\CandidateController;
@@ -17,9 +19,19 @@ Route::view('dashboard', 'dashboard')
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::prefix('member')->name('member.')->group(function () {
-        Route::get('vote', [VoteController::class, 'index'])->name('vote');
-        Route::post('vote', [VoteController::class, 'store'])->name('vote.store');
+    Route::prefix('membre')->name('member.')->group(function () {
+        Route::get('/vote', [VoteController::class, 'index'])->name('vote');
+        Route::post('/vote', [VoteController::class, 'store'])->name('vote.store');
+    });
+
+    Route::prefix('candidat')->name('candidat.')->group(function () {
+        Route::get('/tableau-de-bord', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/infos-personnels', [CandidatePersonalInfoController::class, 'index'])->name('infos');
+        Route::get('/programme-vote', [CandidatePersonalInfoController::class, 'voteInfoEdit'])->name('vote');
+        Route::get('/reseaux-sociaux', [CandidatePersonalInfoController::class, 'socialMediaEdit'])->name('media');
+        Route::put('/infos-personnels', [CandidatePersonalInfoController::class, 'updatePersonalInfo'])->name('infos.update');
+        Route::put('/reseaux-sociaux', [CandidatePersonalInfoController::class, 'updateSocialMedia'])->name('media.update');
+        Route::put('/programme-vote', [CandidatePersonalInfoController::class, 'updateVoteInfo'])->name('vote.update');
     });
     
 });

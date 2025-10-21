@@ -10,7 +10,7 @@
             <img class="w-36 h-36 rounded-full object-cover border-4 border-green-600 shadow-lg mb-4"
                 src="{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}" alt="Candidat">
 
-            <h1 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-2">{{ $candidat->user->name }}</h1>
+            <h1 class="text-2xl font-extrabold text-white mb-2">{{ $candidat->user->name }}</h1>
             @php
                 $post = null;
 
@@ -63,7 +63,7 @@
             <p class="text-green-700 text-sm font-semibold">Poste de {{ $post }}</p>
 
             @if ($candidat->slogan)
-                <p class="mt-3 text-gray-500 italic">« {{ $candidat->slogan }} »</p>
+                <p class="mt-3 text-gray-400 italic">« {{ $candidat->slogan }} »</p>
             @endif
 
             <ul class="flex space-x-4 mt-2">
@@ -121,15 +121,15 @@
         {{-- Contenu principal --}}
         <div class="col-span-2 mt-8 md:mt-0 mx-4 md:mx-0">
             {{-- Colonne principale --}}
-            <div class="space-y-6">
-                <div class="bg-white dark:bg-gray-900 mt-4 md:mt-8">
+            <div class="space-y-8">
+                <div class="mt-4 md:mt-8">
                     <div class="mb-4">
                         <div class="border-l pl-3 border-red-700">
                             <h2 class="text-lg font-bold text-red-700 tracking-wide">Informations</h2>
                         </div>
                     </div>
                     <div class="pl-8">
-                        <ul class="text-gray-800 dark:text-gray-100 space-y-2 list-disc">
+                        <ul class="text-gray-200 space-y-2 list-disc">
                             @php
                                 $filiere = '';
                                 $level = '';
@@ -184,31 +184,35 @@
                     </div>
                 </div>
 
-                <div>
-                    <div class="mb-4">
-                        <div class="border-l pl-3 border-red-700">
-                            <h2 class="text-lg font-bold text-red-700 tracking-wide">Biographie</h2>
+                @if ($candidat->bio)
+                    <div>
+                        <div class="mb-4">
+                            <div class="border-l pl-3 border-red-700">
+                                <h2 class="text-lg font-bold text-red-700 tracking-wide">Biographie</h2>
+                            </div>
+                        </div>
+                        <div class="pl-8">
+                            <div class="text-gray-200 leading-relaxed">
+                                {{ $candidat->bio }}
+                            </div>
                         </div>
                     </div>
-                    <div class="pl-8">
-                        <div class="text-gray-800 dark:text-gray-100 leading-relaxed">
-                            {{ $candidat->bio }}
-                        </div>
-                    </div>
-                </div>
+                @endif
 
-                <div>
-                    <div class="mb-4">
-                        <div class="border-l pl-3 border-red-700">
-                            <h2 class="text-lg font-bold text-red-700 tracking-wide">Programme</h2>
+                @if ($candidat->programme)
+                    <div>
+                        <div class="mb-4">
+                            <div class="border-l pl-3 border-red-700">
+                                <h2 class="text-lg font-bold text-red-700 tracking-wide">Programme</h2>
+                            </div>
+                        </div>
+                        <div class="pl-8">
+                            <div class="text-gray-200 leading-relaxed">
+                                {{ $candidat->programme }}
+                            </div>
                         </div>
                     </div>
-                    <div class="pl-8">
-                        <div class="text-gray-800 dark:text-gray-100 leading-relaxed">
-                            {{ $candidat->programme }}
-                        </div>
-                    </div>
-                </div>
+                @endif
 
             </div>
         </div>

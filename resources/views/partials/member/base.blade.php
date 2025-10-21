@@ -5,7 +5,7 @@
     @include('partials.public._head')
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900">
+<body class="bg-gray-900">
 
     @include('partials.public._navbar')
 

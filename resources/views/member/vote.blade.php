@@ -2,236 +2,232 @@
 
 @section('content')
     <section class="container mx-auto max-w-screen-xl px-6 py-12">
-
         @if (Session::has('success'))
-            <div id="alert-sucess"
-                class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            <div class="flex items-center p-4 mb-4 rounded-lg bg-gray-800/40 text-green-600"
                 role="alert">
-                <svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                    viewBox="0 0 20 20">
-                    <path
-                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                <svg class="shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Z" />
                 </svg>
-                <span class="sr-only">Info</span>
-                <div class="ms-3 text-sm font-medium">
-                    {{ Session::get('success') }}
-                </div>
-                <button type="button"
-                    class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"
-                    data-dismiss-target="#alert-sucess" aria-label="Close">
-                    <span class="sr-only">Close</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                </button>
+                <div class="ms-3 text-sm font-medium">{{ Session::get('success') }}</div>
             </div>
         @elseif($errors->any())
             @foreach ($errors->all() as $error)
-                <div id="alert-error-{{ $loop->index }}"
-                    class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                <div class="flex items-center p-4 mb-4 rounded-lg bg-red-50 bg-gray-800/40 text-red-600"
                     role="alert">
-                    <svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    <svg class="shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 20 20">
-                        <path
-                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Z" />
                     </svg>
-                    <span class="sr-only">Info</span>
-                    <div class="ms-3 text-sm font-medium">
-                        {{ $error }}
-                    </div>
-                    <button type="button"
-                        class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
-                        data-dismiss-target="#alert-error-{{ $loop->index }}" aria-label="Close">
-                        <span class="sr-only">Close</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
+                    <div class="ms-3 text-sm font-medium">{{ $error }}</div>
                 </div>
             @endforeach
         @endif
 
-        <div class="w-full text-center flex flex-col items-center mb-8 md:mb-16">
-            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">
-                Votez pour vos candidats favoris
-            </h2>
-            <p class="mb-3 font-normal text-gray-500 text-sm sm:px-16 lg:px-48">
-                Choisissez le candidat de votre choix pour chaque poste.
-                Prenez le temps de consulter leurs profils avant de valider vos votes.
-            </p>
-            <div class="flex justify-center">
-                <span class="w-32 h-1 bg-green-600 rounded-full"></span>
+        @if ($hasVoted)
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-white">
+                    Merci d'avoir voté !
+                </h2>
+                <div class="mt-3">
+                    <span class="w-32 h-1 bg-green-600 rounded-full inline-block"></span>
+                </div>
             </div>
-        </div>
+        @else
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-white">
+                    Votez pour vos candidats favoris
+                </h2>
+                <div class="mt-3">
+                    <span class="w-32 h-1 bg-green-600 rounded-full inline-block"></span>
+                </div>
+            </div>
+        @endif
 
-        <form action="{{ route('member.vote.store') }}" method="POST" class="space-y-12">
+        @if (!$hasVoted)
+            <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4 mb-8 text-center">
+                <h3 class="text-2xl font-bold text-green-500 mb-2">🗳️ Instruction</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Pour chaque <span class="font-semibold text-white">poste</span>, sélectionnez un candidat.
+                    Si vous ne voulez soutenir aucun candidat pour un poste, laissez-le vide : cela sera considéré comme une
+                    <span class="font-semibold text-yellow-400">abstention</span>. <br>
+                    Une fois terminé, cliquez sur <span class="font-semibold text-green-600">“Soumettre mes votes”</span>.
+                    <br>
+                    Après soumission, <span class="text-red-600">aucune modification ne sera possible</span>.
+                </p>
+            </div>
+        @endif
+
+        <form action="{{ route('member.vote.store') }}" method="POST" class="space-y-10">
             @csrf
-
             <input type="hidden" name="election_id" value="{{ $election->id }}">
-            <div class="container mx-auto">
-                @foreach ($candidats as $poste => $liste)
-                    <div class="md:grid grid-cols-4 gap-4 mb-8">
-                        @php
-                            $post = null;
 
-                            switch ($poste) {
-                                case 'president':
-                                    $post = 'Président';
-                                    break;
-                                case 'vpi':
-                                    $post = 'Vice-Président aux affaires internes';
-                                    break;
-                                case 'vpe':
-                                    $post = 'Vice-Président aux affaires externes';
-                                    break;
-                                case 'secretaire':
-                                    $post = 'Secrétaire';
-                                    break;
-                                case 'tresorier':
-                                    $post = 'Trésorier';
-                                    break;
-                                case 'scome':
-                                    $post = 'Responsable SCOME';
-                                    break;
-                                case 'score':
-                                    $post = 'Responsable SCORE';
-                                    break;
-                                case 'scope':
-                                    $post = 'Responsable SCOPE';
-                                    break;
-                                case 'scora':
-                                    $post = 'Responsable SCORA';
-                                    break;
-                                case 'scoph':
-                                    $post = 'Responsable SCOPH';
-                                    break;
-                                case 'scohe':
-                                    $post = 'Responsable SCOHE';
-                                    break;
-                                case 'communication':
-                                    $post = 'Chargé de Communication';
-                                    break;
-                                case 'sport':
-                                    $post = 'Chargé des activités culturelles et sportives';
-                                    break;
-                                default:
-                                    $post = ucfirst(str_replace('_', ' ', $poste));
-                                    break;
-                            }
-                        @endphp
+            @foreach ($candidats as $poste => $liste)
+                @php
+                    $nomsPostes = [
+                        'president' => 'Président',
+                        'vpi' => 'Vice-Président aux affaires internes',
+                        'vpe' => 'Vice-Président aux affaires externes',
+                        'secretaire' => 'Secrétaire',
+                        'tresorier' => 'Trésorier',
+                        'scome' => 'Responsable SCOME',
+                        'score' => 'Responsable SCORE',
+                        'scope' => 'Responsable SCOPE',
+                        'scora' => 'Responsable SCORA',
+                        'scoph' => 'Responsable SCOPH',
+                        'scohe' => 'Responsable SCOHE',
+                        'communication' => 'Chargé de Communication',
+                        'sport' => 'Chargé des activités culturelles et sportives',
+                    ];
+                    $labelPoste = $nomsPostes[$poste] ?? ucfirst(str_replace('_', ' ', $poste));
+                @endphp
 
-                        <div class="mb-8 md:mb-0">
-                            <div class="border-l pl-3 border-red-700">
-                                <h2 class="text-2xl font-extrabold text-red-700 tracking-wide">
-                                    Poste de {{ ucfirst($post) }}
-                                </h2>
-                            </div>
-                        </div>
-
-                        <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
-                            @foreach ($liste as $candidat)
-                                @php
-                                    $isChecked = $votes->has($poste) && $votes[$poste]->candidat_id == $candidat->id;
-                                @endphp
-
-                                <label
-                                    class="group relative cursor-pointer block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
-                                    <input type="radio" name="vote[{{ $poste }}]" value="{{ $candidat->id }}"
-                                        class="peer hidden" @checked($isChecked) @disabled($hasVoted)>
-
-                                    <div class="p-6 flex flex-col items-center text-center">
-                                        <img src="{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}"
-                                            class="w-28 h-28 rounded-full mb-4 border-4 border-gray-200 group-hover:border-green-600 peer-checked:border-green-600 transition">
-                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">
-                                            {{ $candidat->user->name }}
-                                        </h3>
-                                        <p class="text-gray-600 text-sm mt-2 font-semibold">
-
-                                            @php
-                                                $level = null;
-                                                $filiere = null;
-
-                                                switch ($candidat->user->filiere) {
-                                                    case 'medecine':
-                                                        $filiere = 'Médecine';
-                                                        break;
-                                                    case 'pharmacie':
-                                                        $filiere = 'Pharmacie';
-                                                        break;
-                                                    case 'odonto':
-                                                        $filiere = 'Odonto-Stomatologie';
-                                                        break;
-                                                    default:
-                                                        $filiere = $candidat->user->filiere;
-                                                }
-
-                                                switch ($candidat->user->level) {
-                                                    case 'l1':
-                                                        $level = 'Première année';
-                                                        break;
-                                                    case 'l2':
-                                                        $level = 'Deuxième année';
-                                                        break;
-                                                    case 'l3':
-                                                        $level = 'Troisième année';
-                                                        break;
-                                                    case 'm1':
-                                                        $level = 'Quatrième année';
-                                                        break;
-                                                    case 'm2':
-                                                        $level = 'Cinquième année';
-                                                        break;
-                                                    case 'd1':
-                                                        $level = 'Sixième année';
-                                                        break;
-                                                    case 'd2':
-                                                        $level = 'Interne';
-                                                        break;
-                                                    case 'd3':
-                                                        $level = 'Année de thèse';
-                                                        break;
-                                                    default:
-                                                        $level = $candidat->user->level;
-                                                }
-                                            @endphp
-
-                                            {{ strtoupper($level) }} - {{ ucfirst($filiere) }}
-                                        </p>
-                                    </div>
-
-                                    <div
-                                        class="absolute inset-0 border-2 border-transparent peer-checked:border-green-600 rounded-xl transition-all duration-200">
-                                    </div>
-                                    <div
-                                        class="absolute top-2 right-2 hidden peer-checked:flex items-center justify-center w-6 h-6 bg-green-600 text-white text-xs font-bold rounded-full shadow">
-                                        ✓
-                                    </div>
-                                </label>
-                            @endforeach
-                        </div>
+                <div class="rounded-2xl p-6 shadow-md bg-gray-900/60 backdrop-blur-md">
+                    <div class="mb-6 text-center">
+                        <h3
+                            class="text-2xl font-bold text-white bg-gradient-to-r from-red-600 via-transparent to-red-600 py-2 rounded-lg">
+                            Poste de {{ $labelPoste }}
+                        </h3>
                     </div>
-                @endforeach
-            </div>
 
+                    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        @foreach ($liste as $candidat)
+                            @php
+                                $isChecked = $votes->has($poste) && $votes[$poste]->candidat_id == $candidat->id;
+                            @endphp
+
+                            {{-- Carte candidat (info à gauche, photo à droite) --}}
+                            <label
+                                class="candidate-card relative flex flex-col flex-row items-center gap-4 p-4 rounded-xl bg-gray-800 border border-gray-700 shadow-sm hover:shadow-lg transition-transform duration-200"
+                                data-poste="{{ $poste }}" data-candidat-id="{{ $candidat->id }}">
+                                <input type="radio" name="vote[{{ $poste }}]" value="{{ $candidat->id }}"
+                                    class="hidden candidate-input" @checked($isChecked)
+                                    @disabled($hasVoted)>
+
+                                {{-- Infos (gauche) --}}
+                                <div class="flex-1 text-left">
+                                    <h4 class="text-lg font-bold text-white">
+                                        {{ $candidat->user->name }}
+                                    </h4>
+                                    <p class="text-gray-300 text-sm mt-1 font-semibold">
+                                        {{ $candidat->user->level ? strtoupper($candidat->user->level) : '' }}
+                                        @if ($candidat->user->filiere)
+                                            - {{ ucfirst($candidat->user->filiere) }}
+                                        @endif
+                                    </p>
+                                    @if ($candidat->slogan)
+                                        <p class="text-gray-500 text-sm mt-2 line-clamp-2">
+                                            {{ Str::limit($candidat->slogan, 90) }}
+                                        </p>
+                                    @endif
+                                </div>
+
+                                {{-- Photo (droite) --}}
+                                <div class="relative w-28 h-28 flex-shrink-0">
+                                    <img src="{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}"
+                                        alt="Photo de {{ $candidat->user->name }}"
+                                        class="w-full h-full object-cover rounded-lg border-2 border-transparent peer-checked:border-green-600 transition-all">
+
+                                    {{-- Indicateur circulaire (top-right) --}}
+                                    <div
+                                        class="select-indicator absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold border-2 border-gray-300 transition-all">
+                                        <!-- le contenu (✓) sera affiché via JS/CSS quand sélectionné -->
+                                    </div>
+                                </div>
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+
+            {{-- Bouton de soumission --}}
             @unless ($hasVoted)
-                <div class="text-center mt-12">
+                <div class="text-center mt-6">
                     <button type="submit"
-                        class="inline-flex items-center justify-center px-8 py-3 bg-green-700 text-white font-semibold text-lg rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 transition cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 16 16"
-                            stroke="currentColor">
-                            <path
-                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
-                            <path
-                                d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z" />
-                        </svg>
+                        class="px-8 py-3 bg-green-700 text-white font-semibold text-lg rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-green-300 transition">
                         Soumettre mes votes
                     </button>
                 </div>
             @endunless
         </form>
     </section>
+
+    <script>
+        (function() {
+            // initialisation : gérer états visuels selon radios déjà cochés au chargement
+            document.querySelectorAll('.candidate-card').forEach(card => {
+                const input = card.querySelector('.candidate-input');
+                const indicator = card.querySelector('.select-indicator');
+
+                // applique l'état visuel initial
+                updateCardVisual(card, input, indicator);
+            });
+
+            // clique sur la carte -> toggle sélection (déselection possible)
+            document.querySelectorAll('.candidate-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // ignore si clique sur un élément interactif (ex: lien)
+                    if (e.target.closest('a')) return;
+
+                    const input = this.querySelector('.candidate-input');
+                    if (!input || input.disabled) return;
+
+                    e.preventDefault(); // bloquer comportement natif de label
+
+                    const groupName = input.name; // ex: vote[president]
+
+                    if (input.checked) {
+                        // déjà sélectionné => désélectionner
+                        input.checked = false;
+                        // mettre à jour visuels
+                        updateGroupVisuals(groupName);
+                    } else {
+                        // sélectionner cette option et désélectionner les autres du groupe
+                        document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => r.checked =
+                            false);
+                        input.checked = true;
+                        updateGroupVisuals(groupName);
+                    }
+
+                    // déclencher un event change (utile si tu écoutes côté JS)
+                    input.dispatchEvent(new Event('change', {
+                        bubbles: true
+                    }));
+                });
+            });
+
+            // met à jour visuel d'un groupe (tous les labels partagent le même name)
+            function updateGroupVisuals(groupName) {
+                document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
+                    const card = r.closest('.candidate-card');
+                    const indicator = card.querySelector('.select-indicator');
+                    updateCardVisual(card, r, indicator);
+                });
+            }
+
+            // applique classes visuelles sur une carte en fonction de l'état checked
+            function updateCardVisual(card, input, indicator) {
+                if (!card || !input) return;
+                if (input.checked) {
+                    card.classList.add('ring-2', 'ring-green-600', 'shadow-lg');
+                    // indicator style (vert + tick)
+                    indicator.classList.add('bg-green-600', 'border-green-600');
+                    indicator.textContent = '✓';
+                    indicator.style.color = '#fff';
+                } else {
+                    card.classList.remove('ring-2', 'ring-green-600', 'shadow-lg');
+                    indicator.classList.remove('bg-green-600', 'border-green-600');
+                    indicator.textContent = '';
+                }
+            }
+
+            // si tu veux : rendre clique sur l'input natif aussi fonctionnel (au cas où)
+            document.querySelectorAll('.candidate-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const groupName = this.name;
+                    updateGroupVisuals(groupName);
+                });
+            });
+        })();
+    </script>
+
 @endsection

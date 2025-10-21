@@ -6,7 +6,7 @@
 @section('content')
     <section class="container mx-auto max-w-screen-xl p-6">
         <div class="w-full text-center flex flex-col items-center mb-8">
-            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">
+            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-white">
                 Liste des candidats
             </h2>
             <p class="mb-3 font-normal text-gray-500 text-sm sm:px-16 lg:px-48">
@@ -124,14 +124,14 @@
                                 }
                             @endphp
                             <div
-                                class="w-full max-w-sm bg-gray-100 dark:bg-gray-800/20 border border-gray-100 rounded-xl shadow-sm dark:bg-gray-900 dark:border-gray-800 p-4">
+                                class="w-full max-w-sm bg-gray-800/20 border rounded-xl shadow-sm border-gray-800 p-4">
                                 <div class="flex flex-col items-center pb-10">
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg border border-2 border-green-700"
                                         src="{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}"
                                         alt="Bonnie image" />
-                                    <h5 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
+                                    <h5 class="mb-1 text-xl font-bold text-white">
                                         {{ $candidat->user->name }}</h5>
-                                    <p class="text-gray-600 text-sm mt-2 line-clamp-3 font-semibold">
+                                    <p class="text-gray-400 text-sm mt-2 line-clamp-3 font-semibold">
                                         {{ $level }} - {{ $filiere }}
                                     </p>
                                     <ul class="flex space-x-4 mt-2">
@@ -182,7 +182,7 @@
                 </div>
             @empty
                 <div
-                    class="text-center text-gray-500 p-6 border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800/20 rounded-xl shadow-xl italic font-semibold">
+                    class="text-center text-gray-500 p-6 border border-gray-800 bg-gray-800/20 rounded-xl shadow-xl italic font-semibold">
                     Aucun candidat disponible pour le moment
                 </div>
             @endforelse

@@ -7,7 +7,7 @@
     <section class="container mx-auto max-w-screen-xl p-6">
         {{-- Titre principal --}}
         <div class="w-full text-center flex flex-col items-center mb-8">
-            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">
+            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-white">
                 A propos
             </h2>
             <div class="flex justify-center">
@@ -16,17 +16,8 @@
         </div>
 
         <div class="md:px-16">
-            <p class="text-gray-600 dark:text-gray-300 mb-8">
-                L’<span class="font-semibold text-red-700">Association des Étudiants en Médecine de l’Université de Lomé
-                    (AEMPO)</span>
-                est une organisation académique et humanitaire qui œuvre pour le développement scientifique, social et
-                culturel des futurs médecins.
-                Elle s’engage à former une génération de professionnels de santé responsables, solidaires et ouverts sur le
-                monde.
-            </p>
-
             {{-- Bloc sur le bureau local --}}
-            <div class="bg-gray-100 dark:bg-gray-800/20 rounded-xl shadow-md p-6 mb-8">
+            <div class="mb-8">
                 <div class="flex gap-4 mb-4">
                     <div class="flex justify-center">
                         <span class="w-1 h-6 bg-green-600 rounded-full"></span>
@@ -35,7 +26,7 @@
                         Le bureau local
                     </h3>
                 </div>
-                <p class="text-gray-600 dark:text-gray-300">
+                <p class="text-gray-400">
                     Le bureau local de l’AEMPO assure la gestion quotidienne des activités, la représentation des étudiants,
                     ainsi que la mise en œuvre des projets et campagnes. Il est composé d’un comité exécutif et de plusieurs
                     officiers permanents, chacun chargé d’un domaine spécifique de l’organisation.
@@ -44,7 +35,7 @@
 
             {{-- Rôles des principaux postes --}}
             <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-8">
-                <div class="bg-gray-100 dark:bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
                     <h3 class="text-lg font-semibold text-red-700">Président</h3>
                     <div class="flex mb-2">
                         <span class="w-8 h-1 bg-green-600 rounded-full"></span>
@@ -55,7 +46,7 @@
                     </p>
                 </div>
 
-                <div class="bg-gray-100 dark:bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
                     <h3 class="text-lg font-semibold text-red-700">Vice Président</h3>
                     <div class="flex mb-2">
                         <span class="w-8 h-1 bg-green-600 rounded-full"></span>
@@ -66,7 +57,7 @@
                     </p>
                 </div>
 
-                <div class="bg-gray-100 dark:bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
                     <h3 class="text-lg font-semibold text-red-700">Secrétariat général</h3>
                     <div class="flex mb-2">
                         <span class="w-8 h-1 bg-green-600 rounded-full"></span>
@@ -76,7 +67,7 @@
                     </p>
                 </div>
 
-                <div class="bg-gray-100 dark:bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
                     <h3 class="text-lg font-semibold text-red-700">Tésorerie</h3>
                     <div class="flex mb-2">
                         <span class="w-8 h-1 bg-green-600 rounded-full"></span>
@@ -86,7 +77,7 @@
                     </p>
                 </div>
 
-                <div class="bg-gray-100 dark:bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
                     <h3 class="text-lg font-semibold text-red-700">Communication & Sport</h3>
                     <div class="flex mb-2">
                         <span class="w-8 h-1 bg-green-600 rounded-full"></span>
@@ -97,7 +88,7 @@
                     </p>
                 </div>
 
-                <div class="bg-gray-100 dark:bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
+                <div class="bg-gray-800/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition">
                     <h3 class="text-lg font-semibold text-red-700">Officiers permanents</h3>
                     <div class="flex mb-2">
                         <span class="w-8 h-1 bg-green-600 rounded-full"></span>

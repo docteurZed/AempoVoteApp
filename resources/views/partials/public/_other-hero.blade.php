@@ -1,5 +1,5 @@
 <section
-    class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-800 bg-blend-multiply">
+    class="bg-center bg-no-repeat bg-[url({{ asset('img/bg.jpg') }})] bg-gray-800 bg-cover bg-blend-multiply">
     <div class="px-4 mx-auto max-w-screen-xl text-center py-12 lg:py-24">
         <h1 class="text-2xl font-extrabold text-white mb-2">{{ $pageTitle }}</h1>
         <nav class="flex justify-center mb-6" aria-label="Breadcrumb">

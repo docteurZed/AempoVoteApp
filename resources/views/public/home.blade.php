@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-    <section class="bg-gray-100 dark:bg-gray-800/20 container mx-auto max-w-screen-xl p-6 mb-16">
+    <section class="bg-gray-800/20 container mx-auto max-w-screen-xl p-6 mb-16">
         <div class="grid md:grid-cols-2 gap-8 items-center md:px-16">
             <div>
                 <div class="w-full flex flex-col mb-8">
@@ -11,13 +11,12 @@
                         <div class="flex justify-center">
                             <span class="w-1 h-10 bg-green-600 rounded-full"></span>
                         </div>
-                        <h2
-                            class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">
+                        <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-white">
                             A propos
                         </h2>
                     </div>
                 </div>
-                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                <p class="text-gray-300 mb-6 leading-relaxed">
                     L’<span class="font-bold text-red-700">AEMPO</span> est l’association représentative des étudiants
                     en médecine
                     de l’Université de Lomé. Elle œuvre pour la formation, la solidarité et l’épanouissement de la
@@ -35,7 +34,7 @@
             </div>
 
             <div class="relative">
-                <img src="/images/about-aempo.jpg" alt="AEMPO" class="rounded-2xl shadow-lg w-full object-cover h-80">
+                <img src="{{ asset('img/aempo.jpg') }}" alt="AEMPO" class="rounded-2xl shadow-lg w-full object-cover">
                 <div class="absolute inset-0 bg-green-700/10 rounded-xl"></div>
             </div>
         </div>
@@ -44,7 +43,7 @@
     <section class="container mx-auto max-w-screen-xl p-6 mb-16">
 
         <div class="w-full text-center flex flex-col items-center mb-8">
-            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">
+            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-white">
                 Calendrier électoral
             </h2>
             <p class="mb-3 font-normal text-gray-500 text-sm sm:px-16 lg:px-48">
@@ -56,52 +55,49 @@
         </div>
 
         <div class="w-full flex justify-center">
-            <ol class="relative border-s border-gray-200 dark:border-gray-700">
+            <ol class="relative border-s border-gray-700">
 
                 {{-- PHASE 1 --}}
                 <li class="mb-10 ms-4">
-                    <div
-                        class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900">
+                    <div class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-gray-900">
                     </div>
-                    <time class="mb-1 text-sm font-normal text-gray-400 dark:text-gray-500 italic">
+                    <time class="mb-1 text-sm font-normal text-gray-500 italic">
                         09 – 16 Octobre 2025
                     </time>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 class="text-lg font-semibold text-white">
                         Dépôt des candidatures
                     </h3>
-                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    <p class="text-base font-normal text-gray-400">
                         Phase de dépôt et de validation des candidatures auprès de la Commission Électorale Indépendante.
                     </p>
                 </li>
 
                 {{-- PHASE 2 --}}
                 <li class="mb-10 ms-4">
-                    <div
-                        class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900">
+                    <div class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-gray-900">
                     </div>
-                    <time class="mb-1 text-sm font-normal text-gray-400 dark:text-gray-500 italic">
+                    <time class="mb-1 text-sm font-normal text-gray-500 italic">
                         17 Octobre 2025
                     </time>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 class="text-lg font-semibold text-white">
                         Étude et validation des dossiers
                     </h3>
-                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    <p class="text-base font-normal text-gray-400">
                         Analyse des candidatures et publication de la liste provisoire des candidats retenus.
                     </p>
                 </li>
 
                 {{-- PHASE 3 --}}
                 <li class="mb-10 ms-4">
-                    <div
-                        class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900">
+                    <div class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-gray-900">
                     </div>
-                    <time class="mb-1 text-sm font-normal text-gray-400 dark:text-gray-500 italic">
+                    <time class="mb-1 text-sm font-normal text-gray-500 italic">
                         18 – 19 Octobre 2025
                     </time>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 class="text-lg font-semibold text-white">
                         Contestations et publication définitive
                     </h3>
-                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    <p class="text-base font-normal text-gray-400">
                         Période de contestations et traitement des recours suivie de la publication de la liste définitive
                         des
                         candidats retenus.
@@ -110,64 +106,60 @@
 
                 {{-- PHASE 4 --}}
                 <li class="mb-10 ms-4">
-                    <div
-                        class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900">
+                    <div class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-gray-900">
                     </div>
-                    <time class="mb-1 text-sm font-normal text-gray-400 dark:text-gray-500 italic">
+                    <time class="mb-1 text-sm font-normal text-gray-500 italic">
                         20 – 24 Octobre 2025
                     </time>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 class="text-lg font-semibold text-white">
                         Campagne électorale
                     </h3>
-                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    <p class="text-base font-normal text-gray-400">
                         Période officielle de campagne : les candidats présentent leurs programmes et projets aux électeurs.
                     </p>
                 </li>
 
                 {{-- PHASE 5 --}}
                 <li class="mb-10 ms-4">
-                    <div
-                        class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900">
+                    <div class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-gray-900">
                     </div>
-                    <time class="mb-1 text-sm font-normal text-gray-400 dark:text-gray-500 italic">
+                    <time class="mb-1 text-sm font-normal text-gray-500 italic">
                         25 Octobre 2025
                     </time>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 class="text-lg font-semibold text-white">
                         Débat électoral
                     </h3>
-                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    <p class="text-base font-normal text-gray-400">
                         Débat public entre les différents candidats pour exposer leurs visions et priorités.
                     </p>
                 </li>
 
                 {{-- PHASE 6 --}}
                 <li class="mb-10 ms-4">
-                    <div
-                        class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900">
+                    <div class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-gray-900">
                     </div>
-                    <time class="mb-1 text-sm font-normal text-gray-400 dark:text-gray-500 italic">
+                    <time class="mb-1 text-sm font-normal text-gray-500 italic">
                         27 Octobre 2025
                     </time>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 class="text-lg font-semibold text-white">
                         Jour du scrutin
                     </h3>
-                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    <p class="text-base font-normal text-gray-400">
                         Déroulement du scrutin en ligne, dépouillement et proclamation des résultats provisoires.
                     </p>
                 </li>
 
                 {{-- PHASE 7 --}}
                 <li class="ms-4">
-                    <div
-                        class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900">
+                    <div class="absolute w-3 h-3 bg-red-700 rounded-full mt-1.5 -start-1.5 border border-gray-900">
                     </div>
-                    <time class="mb-1 text-sm font-normal text-gray-400 dark:text-gray-500 italic">
+                    <time class="mb-1 text-sm font-normal text-gray-500 italic">
                         28 – 29 Octobre 2025
                     </time>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 class="text-lg font-semibold text-white">
                         Proclamation des résultats définitifs
                     </h3>
-                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    <p class="text-base font-normal text-gray-400">
                         Traitement des éventuels recours, puis proclamation officielle des résultats définitifs.
                     </p>
                 </li>
@@ -176,10 +168,10 @@
         </div>
     </section>
 
-    <section class="bg-gray-100 dark:bg-gray-800/20 container mx-auto max-w-screen-xl p-6 mb-16">
+    <section class="bg-gray-800/20 container mx-auto max-w-screen-xl p-6 mb-16">
         {{-- Titre principal --}}
         <div class="w-full text-center flex flex-col items-center mb-8">
-            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">
+            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-white">
                 Communiqués
             </h2>
             <p class="mb-3 font-normal text-gray-500 text-sm sm:px-16 lg:px-48">
@@ -194,13 +186,13 @@
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 md:px-16">
             @forelse ($communiques as $communique)
                 <div
-                    class="bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-xl transition-all duration-300">
+                    class="bg-gray-800/20 rounded-xl shadow-md border border-gray-800 overflow-hidden hover:shadow-xl transition-all duration-300">
                     <div class="p-6 flex flex-col justify-between h-full">
                         <div>
                             <h2 class="font-bold text-red-700 mb-2">
                                 {{ $communique->title }}
                             </h2>
-                            <div class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                            <div class="text-gray-400 text-sm mb-4">
                                 {{ $communique->description }}
                             </div>
                         </div>
@@ -224,7 +216,7 @@
                 </div>
             @empty
                 <div
-                    class="col-span-3 text-center text-gray-500 p-6 border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800/20 rounded-xl shadow-xl italic font-semibold">
+                    class="col-span-3 text-center text-gray-500 p-6 border border-gray-800 bg-gray-800/20 rounded-xl shadow-xl italic font-semibold">
                     Aucun communiqué disponible pour le moment
                 </div>
             @endforelse
@@ -234,7 +226,7 @@
     <section class="container mx-auto max-w-screen-xl p-6 mb-16">
 
         <div class="w-full text-center flex flex-col items-center mb-8">
-            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">
+            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none, text-white">
                 FAQ - Questions fréquentes
             </h2>
             <p class="mb-3 font-normal text-gray-500 text-sm sm:px-16 lg:px-48">
@@ -247,7 +239,7 @@
         <div id="accordion-collapse" data-accordion="collapse" class="md:px-16">
             <h2 id="accordion-collapse-heading-1">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                    class="flex items-center justify-between w-full p-5 font-medium border border-b-0 bg-gray-700/50 rounded-t-xl focus:ring-4 focus:ring-gray-800 border-gray-700 text-gray-400 hover:bg-gray-800 gap-3"
                     data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
                     aria-controls="accordion-collapse-body-1">
                     <span class="text-red-700">Qui peut voter aux élections locales ?</span>
@@ -259,8 +251,8 @@
                 </button>
             </h2>
             <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
-                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                    <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <div class="p-5 border border-b-0 border-gray-700 bg-gray-900">
+                    <p class="mb-2 text-gray-400">
                         Sont électeurs seulement les membres actifs, honoraires, bienfaiteurs et les alumnis de
                         l’association à jour dans leur cotisation et ayant une carte de membre valide pour l'année en cours.
                     </p>
@@ -269,7 +261,7 @@
 
             <h2 id="accordion-collapse-heading-2">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                    class="bg-gray-700/50 flex items-center justify-between w-full p-5 font-medium border border-b-0 focus:ring-4 focus:ring-gray-800 border-gray-700 text-gray-400 hover:bg-gray-800 gap-3"
                     data-accordion-target="#accordion-collapse-body-2" aria-expanded="false"
                     aria-controls="accordion-collapse-body-2">
                     <span class="text-red-700">Comment les candidats sont-ils sélectionnés ?</span>
@@ -281,8 +273,8 @@
                 </button>
             </h2>
             <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
-                <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                    <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <div class="p-5 border border-b-0 border-gray-700 bg-gray-900">
+                    <p class="mb-2 text-gray-400">
                         Les candidats sont recrutés par appel à candidature lancé par la commission électorale pour les
                         élections du
                         bureau local. Ils doivent remplir les critères d’éligibilité définis dans les statuts de
@@ -293,7 +285,7 @@
 
             <h2 id="accordion-collapse-heading-3">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                    class="bg-gray-700/50 flex items-center justify-between w-full p-5 font-medium border focus:ring-4 focus:ring-gray-800 border-gray-700 text-gray-400 hover:bg-gray-800 gap-3"
                     data-accordion-target="#accordion-collapse-body-3" aria-expanded="false"
                     aria-controls="accordion-collapse-body-3">
                     <span class="text-red-700">Comment se déroule le vote en ligne ?</span>
@@ -305,13 +297,13 @@
                 </button>
             </h2>
             <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
-                <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                    <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <div class="p-5 border border-t-0 border-gray-700 bg-gray-900">
+                    <p class="mb-2 text-gray-400">
                         Le vote se fait en ligne au scrutin secret nominal pluriel. Chaque électeur peut sélectionner un
                         seul candidat par poste. Après avoir sélectionné tous les candidats, l’électeur soumet ses votes via
                         le bouton de validation.
                     </p>
-                    <p class="mb-2 text-gray-500 dark:text-gray-400">
+                    <p class="mb-2 text-gray-400">
                         Les responsables de la commission électorale supervisent et contrôlent l’intégrité du processus.
                     </p>
                 </div>
@@ -319,7 +311,7 @@
 
             <h2 id="accordion-collapse-heading-4">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                    class="bg-gray-700/50 flex items-center justify-between w-full p-5 font-medium border focus:ring-4 focus:ring-gray-800 border-gray-700 text-gray-400 hover:bg-gray-800 gap-3"
                     data-accordion-target="#accordion-collapse-body-4" aria-expanded="false"
                     aria-controls="accordion-collapse-body-4">
                     <span class="text-red-700">Que faire si je rencontre un problème technique ?</span>
@@ -331,14 +323,14 @@
                 </button>
             </h2>
             <div id="accordion-collapse-body-4" class="hidden" aria-labelledby="accordion-collapse-heading-4">
-                <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                    <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <div class="p-5 border border-t-0 border-gray-700 bg-gray-900">
+                    <p class="mb-2 text-gray-400">
                         Vous pouvez contacter la Commission Électorale à l'adresse suivante :
                         <a href="mailto:{{ config('mail.from.address') }}" class="font-semibold hover:underline">
                             {{ config('mail.from.address') }}
                         </a>
                     </p>
-                    <p class="text-gray-500 dark:text-gray-400">
+                    <p class="text-gray-400">
                         Assurez-vous d’indiquer votre problème en détail pour une assistance rapide.
                     </p>
                 </div>
@@ -346,10 +338,10 @@
         </div>
     </section>
 
-    <section class="bg-gray-100 dark:bg-gray-800/20 container mx-auto max-w-screen-xl p-6">
+    <section class="bg-gray-800/20 container mx-auto max-w-screen-xl p-6">
 
         <div class="w-full text-center flex flex-col items-center mb-8">
-            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-white">
+            <h2 class="mb-2 text-3xl lg:text-4xl font-extrabold tracking-tight leading-none text-white">
                 Contact
             </h2>
             <div class="flex justify-center">
@@ -357,7 +349,7 @@
             </div>
         </div>
         <div class="md:px-16 text-center">
-            <p class="text-gray-600 dark:text-gray-400">
+            <p class="text-gray-400">
                 Pour toute question ou assistance concernant les élections, veuillez contacter la commission électorale à
                 l'adresse email
                 suivante :
