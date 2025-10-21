@@ -1,6 +1,6 @@
 @extends('partials.public.base', [
-    'pageTitle' => 'Candidats',
-    'pageName' => 'Liste des candidats',
+    'pageTitle' => 'A propos',
+    'pageName' => 'Informations essentielles',
 ])
 
 @section('content')
