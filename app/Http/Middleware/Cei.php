@@ -18,13 +18,13 @@ class Cei
     {
         $response = $next($request);
 
-        // $user = Auth::user();
+        $user = Auth::user();
 
-        // if (!$user) {
-        //     redirect('/admin/login');
-        // } elseif (!in_array($user->role, ['admin', 'cei'])) {
-        //     abort(403, 'Accès refusé');
-        // }
+        if (!$user) {
+            redirect('/admin/login');
+        } elseif (!in_array($user->role, ['admin', 'cei'])) {
+            abort(403, 'Accès refusé');
+        }
 
         return $response;
     }
