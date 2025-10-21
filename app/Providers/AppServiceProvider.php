@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Candidat;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Schema::defaultStringLength(131);
+        
         View::composer(['candidate.*'], function ($view) {
             if (Auth::check()) {
                 $profil = Candidat::where('user_id', Auth::id())->first()->photo;
