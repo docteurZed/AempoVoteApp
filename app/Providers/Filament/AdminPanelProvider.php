@@ -61,7 +61,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-                Cei::class,
+                // Cei::class,
             ])
             ->spa();
     }
