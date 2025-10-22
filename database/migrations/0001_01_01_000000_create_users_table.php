@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->boolean('is_active')->default(true);
             $table->enum('filiere', ['medecine', 'pharmacie', 'odonto'])->nullable();
-            $table->enum('level', ['l1', 'l2', 'l3', 'm1', 'm2', 'd1', 'd2', 'd3'])->nullable();
+            $table->enum('level', ['l1', 'l2', 'l3', 'm1', 'm2', 'd1', 'd2', 'd3', 'alumni'])->nullable();
             $table->enum('role', ['member', 'cei', 'admin'])->default('member');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

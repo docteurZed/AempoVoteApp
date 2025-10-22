@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserImportController;
 use App\Http\Controllers\Candidate\CandidatePersonalInfoController;
 use App\Http\Controllers\Candidate\DashboardController;
 use App\Http\Controllers\Member\VoteController;
@@ -12,10 +13,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/a-propos', [AboutController::class, 'index'])->name('about');
 Route::get('/candidats', [CandidateController::class, 'index'])->name('candidate');
 Route::get('/candidat-{id}/detail', [CandidateController::class, 'show'])->name('candidate.detail');
-
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -33,7 +30,11 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/reseaux-sociaux', [CandidatePersonalInfoController::class, 'updateSocialMedia'])->name('media.update');
         Route::put('/programme-vote', [CandidatePersonalInfoController::class, 'updateVoteInfo'])->name('vote.update');
     });
-    
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/import-users', [UserImportController::class, 'index'])->name('import.index');
+        Route::post('/import-users', [UserImportController::class, 'store'])->name('import.store');
+    });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

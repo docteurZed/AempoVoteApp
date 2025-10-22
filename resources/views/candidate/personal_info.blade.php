@@ -60,6 +60,7 @@
                         <option value="d1" @selected(auth()->user()->level === 'd1')>Sixième année</option>
                         <option value="d2" @selected(auth()->user()->level === 'd2')>Interne</option>
                         <option value="d3" @selected(auth()->user()->level === 'd3')>Année de thèse</option>
+                        <option value="alumni" @selected(auth()->user()->level === 'alumni')Alumni</option>
                     </select>
                 </div>
 

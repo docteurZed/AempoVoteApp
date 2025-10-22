@@ -3,20 +3,22 @@
 @section('content')
     <section class="container mx-auto max-w-screen-xl px-6 py-12">
         @if (Session::has('success'))
-            <div class="flex items-center p-4 mb-4 rounded-lg bg-gray-800/40 text-green-600"
-                role="alert">
-                <svg class="shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Z" />
+            <div class="flex items-center p-4 mb-4 rounded-lg bg-gray-800/40 text-green-600" role="alert">
+                <svg class="shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path
+                        d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
                 </svg>
                 <div class="ms-3 text-sm font-medium">{{ Session::get('success') }}</div>
             </div>
         @elseif($errors->any())
             @foreach ($errors->all() as $error)
-                <div class="flex items-center p-4 mb-4 rounded-lg bg-red-50 bg-gray-800/40 text-red-600"
-                    role="alert">
+                <div class="flex items-center p-4 mb-4 rounded-lg bg-gray-800/40 text-red-600" role="alert">
                     <svg class="shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Z" />
+                        viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                        <path
+                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
                     </svg>
                     <div class="ms-3 text-sm font-medium">{{ $error }}</div>
                 </div>
@@ -93,6 +95,55 @@
                         @foreach ($liste as $candidat)
                             @php
                                 $isChecked = $votes->has($poste) && $votes[$poste]->candidat_id == $candidat->id;
+
+                                $level = null;
+                                $filiere = null;
+
+                                switch ($candidat->user->filiere) {
+                                    case 'medecine':
+                                        $filiere = 'Médecine';
+                                        break;
+                                    case 'pharmacie':
+                                        $filiere = 'Pharmacie';
+                                        break;
+                                    case 'odonto':
+                                        $filiere = 'Odonto-Stomatologie';
+                                        break;
+                                    default:
+                                        $filiere = $candidat->user->filiere;
+                                }
+
+                                switch ($candidat->user->level) {
+                                    case 'l1':
+                                        $level = 'Première année';
+                                        break;
+                                    case 'l2':
+                                        $level = 'Deuxième année';
+                                        break;
+                                    case 'l3':
+                                        $level = 'Troisième année';
+                                        break;
+                                    case 'm1':
+                                        $level = 'Quatrième année';
+                                        break;
+                                    case 'm2':
+                                        $level = 'Cinquième année';
+                                        break;
+                                    case 'd1':
+                                        $level = 'Sixième année';
+                                        break;
+                                    case 'd2':
+                                        $level = 'Interne';
+                                        break;
+                                    case 'd3':
+                                        $level = 'Année de thèse';
+                                        break;
+                                    case 'alumni':
+                                        $level = 'Alumni';
+                                        break;
+                                    default:
+                                        $level = $candidat->user->level;
+                                }
                             @endphp
 
                             {{-- Carte candidat (info à gauche, photo à droite) --}}
@@ -109,9 +160,9 @@
                                         {{ $candidat->user->name }}
                                     </h4>
                                     <p class="text-gray-300 text-sm mt-1 font-semibold">
-                                        {{ $candidat->user->level ? strtoupper($candidat->user->level) : '' }}
+                                        {{ $level }}
                                         @if ($candidat->user->filiere)
-                                            - {{ ucfirst($candidat->user->filiere) }}
+                                            - {{ $filiere }}
                                         @endif
                                     </p>
                                     @if ($candidat->slogan)

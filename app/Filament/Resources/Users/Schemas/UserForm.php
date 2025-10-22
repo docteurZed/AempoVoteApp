@@ -52,6 +52,7 @@ class UserForm
                         'd1' => 'Doctorat 1',
                         'd2' => 'Doctorat 2',
                         'd3' => 'Doctorat 3',
+                        'alumni' => 'Alumni',
                     ])
                     ->required(false),
 

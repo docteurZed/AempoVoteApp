@@ -9,15 +9,7 @@
 
     @include('partials.public._navbar')
 
-    {{-- @if (isset($isHome))
-        @include('partials.public._home-hero')
-    @else
-        @include('partials.public._other-hero')
-    @endif --}}
-
     @yield('content')
-
-    {{-- @include('partials.public._footer') --}}
 
     @include('partials.public._script')
 

@@ -25,16 +25,17 @@
 
                 <div>
                     <label for="bio" class="block mb-2 font-semibold text-green-600">Biographie</label>
-                    <textarea name="bio" id="bio"
-                        placeholder="Parlez brièvement de votre parcours et vos motivations"
+                    <textarea name="bio" id="bio" placeholder="Parlez brièvement de votre parcours et vos motivations"
                         class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5">{{ old('bio', $candidat->bio) }}</textarea>
                 </div>
 
                 <div>
                     <label for="programme" class="block mb-2 font-semibold text-green-600">Programme</label>
-                    <textarea name="programme" id="programme"
-                        placeholder="Décrivez brièvement votre programme ou vos axes prioritaires"
-                        class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5">{{ old('programme', $candidat->programme) }}</textarea>
+                    <div id="editor"
+                        class="bg-gray-700/50 border border-gray-600 text-white text-sm focus:ring-red-500 focus:border-red-500 block w-full p-2.5">
+                        {!! $candidat->programme !!}
+                    </div>
+                    <input type="hidden" name="programme" id="programme">
                 </div>
             </div>
 
@@ -53,12 +54,12 @@
                                         stroke-width="2"
                                         d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5A5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                 </svg>
-                                <p class="mb-1 text-sm text-gray-400"><span class="font-semibold text-red-500">Cliquez
+                                <p id="photo-text" class="mb-1 text-sm text-gray-400"><span class="font-semibold text-red-500">Cliquez
                                         pour
                                         téléverser</span> ou glissez-déposez</p>
                                 <p class="text-xs text-gray-500">PNG, JPG</p>
                             </div>
-                            <input id="photo" name="photo" type="file" class="hidden"  accept=".png,.jpg,.jpeg"/>
+                            <input id="photo" name="photo" type="file" class="hidden" accept=".png,.jpg,.jpeg" />
                         </label>
                     </div>
                     @if ($candidat->photo)
@@ -80,7 +81,7 @@
                                         stroke-width="2"
                                         d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5A5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                 </svg>
-                                <p class="mb-1 text-sm text-gray-400"><span class="font-semibold text-red-500">Cliquez
+                                <p id="affiche-text" class="mb-1 text-sm text-gray-400"><span class="font-semibold text-red-500">Cliquez
                                         pour
                                         téléverser</span> ou glissez-déposez</p>
                                 <p class="text-xs text-gray-500">Affiche PNG ou JPG</p>
@@ -112,4 +113,30 @@
             </div>
         </form>
     </section>
+
+    <script>
+        const photoInput = document.getElementById('photo');
+        const photoText = document.getElementById('photo-text');
+
+        photoInput.addEventListener('change', () => {
+            if (photoInput.files.length > 0) {
+                photoText.innerHTML = `<span class="font-semibold text-red-500">${photoInput.files[0].name}</span>`;
+            } else {
+                photoText.innerHTML =
+                    `<span class="font-semibold text-red-500">Cliquez pour téléverser</span> ou glissez-déposez`;
+            }
+        });
+
+        const afficheInput = document.getElementById('affiche');
+        const afficheText = document.getElementById('affiche-text');
+
+        afficheInput.addEventListener('change', () => {
+            if (afficheInput.files.length > 0) {
+                afficheText.innerHTML = `<span class="font-semibold text-red-500">${afficheInput.files[0].name}</span>`;
+            } else {
+                afficheText.innerHTML =
+                    `<span class="font-semibold text-red-500">Cliquez pour téléverser</span> ou glissez-déposez`;
+            }
+        });
+    </script>
 @endsection

@@ -57,7 +57,7 @@
                 @if ($candidat->programme)
                     <div>
                         <h3 class="text-lg font-semibold text-green-500">Programme</h3>
-                        <p class="text-white whitespace-pre-line">{{ $candidat->programme }}</p>
+                        <div class="text-white">{!! $candidat->programme !!}</div>
                     </div>
                 @endif
                 @if ($candidat->bio)
@@ -69,7 +69,7 @@
             </div>
 
             {{-- Images --}}
-            <div class="space-y-4 flex flex-col">
+            <div class="space-y-4 flex flex-col items-end">
                 <div>
                     <h3 class="text-lg font-semibold text-green-500 mb-2">Photo de profil</h3>
                     @if ($candidat->photo)

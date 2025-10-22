@@ -173,6 +173,8 @@
                                     case 'd3':
                                         $level = 'Année de thèse';
                                         break;
+                                    case 'alumni':
+                                        $level = 'Alumni';
                                     default:
                                         $level = $candidat->user->level;
                                 }
@@ -208,7 +210,7 @@
                         </div>
                         <div class="pl-8">
                             <div class="text-gray-200 leading-relaxed">
-                                {{ $candidat->programme }}
+                                {!! $candidat->programme !!}
                             </div>
                         </div>
                     </div>

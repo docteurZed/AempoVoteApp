@@ -70,9 +70,9 @@
 
                 <div class="md:grid grid-cols-4 gap-4 mb-8">
                     <div class="mb-4 md:mb-0">
-                        <div class="border-l pl-3 border-red-700">
-                            <h2 class="text-xl font-extrabold text-red-700 tracking-wide">Poste de {{ $post }}</h2>
-                        </div>
+                        <h2
+                            class="text-xl font-bold text-white bg-gradient-to-r from-red-600 via-transparent to-red-600 py-2 rounded-lg text-center p-2">
+                            Poste de {{ $post }}</h2>
                     </div>
                     <div class="col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach ($liste as $candidat)
@@ -119,12 +119,14 @@
                                     case 'd3':
                                         $level = 'Année de thèse';
                                         break;
+                                    case 'alumni':
+                                        $level = 'Alumni';
+                                        break;
                                     default:
                                         $level = $candidat->user->level;
                                 }
                             @endphp
-                            <div
-                                class="w-full max-w-sm bg-gray-800/20 border rounded-xl shadow-sm border-gray-800 p-4">
+                            <div class="w-full max-w-sm bg-gray-800/20 border rounded-xl shadow-sm border-gray-800 p-4">
                                 <div class="flex flex-col items-center pb-10">
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg border border-2 border-green-700"
                                         src="{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}"

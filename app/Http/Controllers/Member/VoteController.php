@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Candidat;
 use App\Models\Election;
 use App\Models\Vote;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,11 +28,23 @@ class VoteController extends Controller
             ->get()
             ->groupBy('poste');
 
-        return view('member.vote', compact('candidats', 'votes', 'election', 'hasVoted'));
+        $start = Carbon::parse('2025-10-26 00:00');
+        $end = Carbon::parse('2025-10-27 00:00');
+        $now = Carbon::now();
+
+        if ($now->lt($start) || $now->gt($end)) {
+            return view('member.vote_attempt', compact('start', 'end', 'now'));
+        } else {
+            return view('member.vote', compact('candidats', 'votes', 'election', 'hasVoted'));
+        }
     }
 
     public function store(Request $request)
     {
+        if ($request->user()->role == 'admin') {
+            return redirect()->back()->withErrors('Les administrateurs ne peuvent pas voter.');
+        }
+
         $user = Auth::user();
         $election = Election::first();
 
