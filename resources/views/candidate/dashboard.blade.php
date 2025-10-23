@@ -73,7 +73,7 @@
                 <div>
                     <h3 class="text-lg font-semibold text-green-500 mb-2">Photo de profil</h3>
                     @if ($candidat->photo)
-                        <img src="{{ asset('storage/' . $candidat->photo) }}" alt="Photo candidat"
+                        <img src="{{ Storage::url($candidat->photo) }}" alt="Photo candidat"
                             class="w-40 rounded-lg border-2 border-green-600 object-cover">
                     @else
                         <span class="text-gray-400">Aucune photo</span>
@@ -82,7 +82,7 @@
                 <div>
                     <h3 class="text-lg font-semibold text-green-500 mb-2">Affiche de campagne</h3>
                     @if ($candidat->affiche)
-                        <img src="{{ asset('storage/' . $candidat->affiche) }}" alt="Affiche candidat"
+                        <img src="{{ Storage::url($candidat->affiche) }}" alt="Affiche candidat"
                             class="w-40 rounded-lg border-2 border-green-600 object-cover">
                     @else
                         <span class="text-gray-400">Aucune affiche</span>
