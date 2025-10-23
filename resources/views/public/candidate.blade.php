@@ -130,10 +130,10 @@
                                 <div class="flex flex-col items-center pb-10">
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg border border-2 border-green-700"
                                         src="{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}"
-                                        alt="Bonnie image" />
-                                    <h5 class="mb-1 text-xl font-bold text-white">
+                                        alt="image" />
+                                    <h5 class="mb-1 text-xl font-bold text-white text-center">
                                         {{ $candidat->user->name }}</h5>
-                                    <p class="text-gray-400 text-sm mt-2 line-clamp-3 font-semibold">
+                                    <p class="text-gray-400 text-sm mt-2 line-clamp-3 font-semibold text-center">
                                         {{ $level }} - {{ $filiere }}
                                     </p>
                                     <ul class="flex space-x-4 mt-2">

@@ -156,10 +156,10 @@
 
                                 {{-- Infos (gauche) --}}
                                 <div class="flex-1 text-left">
-                                    <h4 class="text-lg font-bold text-white">
+                                    <h4 class="text-lg font-bold text-white text-center">
                                         {{ $candidat->user->name }}
                                     </h4>
-                                    <p class="text-gray-300 text-sm mt-1 font-semibold">
+                                    <p class="text-gray-300 text-sm mt-1 font-semibold text-center">
                                         {{ $level }}
                                         @if ($candidat->user->filiere)
                                             - {{ $filiere }}
