@@ -63,7 +63,7 @@
                         </label>
                     </div>
                     @if ($candidat->photo)
-                        <img src="{{ asset('storage/' . $candidat->photo) }}" alt="Photo actuelle"
+                        <img src="{{ Storage::url($candidat->photo) }}" alt="Photo actuelle"
                             class="mt-3 w-40 rounded-lg border-2 border-green-600 object-cover mx-auto">
                     @endif
                 </div>
@@ -90,7 +90,7 @@
                         </label>
                     </div>
                     @if ($candidat->affiche)
-                        <img src="{{ asset('storage/' . $candidat->affiche) }}" alt="Affiche actuelle"
+                        <img src="{{ Storage::url($candidat->affiche) }}" alt="Affiche actuelle"
                             class="mt-3 w-40 rounded-lg border-2 border-green-600 object-cover mx-auto">
                     @endif
                 </div>

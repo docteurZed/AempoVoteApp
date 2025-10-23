@@ -8,7 +8,7 @@
         {{-- En-tête du candidat --}}
         <div class="flex flex-col items-center text-center">
             <img class="w-36 h-36 rounded-full object-cover border-4 border-green-600 shadow-lg mb-4"
-                src="{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}" alt="Candidat">
+                src="{{ $candidat->photo ? Storage::url($candidat->photo) : asset('img/profil.jpg') }}" alt="Candidat">
 
             <h1 class="text-2xl font-extrabold text-white mb-2">{{ $candidat->user->name }}</h1>
             @php
@@ -104,7 +104,7 @@
 
             @if ($candidat->affiche)
                 <div class="rounded-2xl shadow-md p-4 mt-8">
-                    <img src="{{ asset('storage/' . $candidat->affiche) }}" alt="Affiche de campagne"
+                    <img src="{{ Storage::url($candidat->affiche) }}" alt="Affiche de campagne"
                         class="rounded-xl shadow">
                 </div>
             @endif
