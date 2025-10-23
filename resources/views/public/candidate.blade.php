@@ -128,6 +128,7 @@
                             @endphp
                             <div class="w-full max-w-sm bg-gray-800/20 border rounded-xl shadow-sm border-gray-800 p-4">
                                 <div class="flex flex-col items-center pb-10">
+                                    <span class="my-3 text-white">{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}</span>
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg border border-2 border-green-700"
                                         src="{{ $candidat->photo ? asset('storage/' . $candidat->photo) : asset('img/profil.jpg') }}"
                                         alt="image" />
