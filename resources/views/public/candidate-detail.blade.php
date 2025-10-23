@@ -1,5 +1,5 @@
 @extends('partials.public.base', [
-    'pageTitle' => 'Nom du candidat',
+    'pageTitle' => 'Candidat',
     'pageName' => 'Détails du candidat',
 ])
 
