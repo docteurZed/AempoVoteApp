@@ -139,7 +139,7 @@
                                         }
                                     @endphp
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg border border-2 border-green-700"
-                                        src="{{ $candidat->photo ? Storage::url($candidat->photo) : asset('img/profil.jpg') }}"
+                                        src="{{ $photo }}"
                                         alt="image" />
                                     <h5 class="mb-1 text-xl font-bold text-white text-center">
                                         {{ $candidat->user->name }}</h5>
