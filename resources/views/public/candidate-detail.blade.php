@@ -116,8 +116,19 @@
             </ul>
 
             @if ($candidat->affiche)
+                @php
+                    $affiche = '';
+
+                    $extension = pathinfo($candidat->affiche, PATHINFO_EXTENSION);
+
+                    if ($extension == 'jpg') {
+                        $affiche = 'candidatFile/affiche-' . $candidat->user->student_number . '.jpg';
+                    } elseif ($extension == 'png') {
+                        $affiche = 'candidatFile/affiche-' . $candidat->user->student_number . '.png';
+                    }
+                @endphp
                 <div class="rounded-2xl shadow-md p-4 mt-8">
-                    <img src="{{ Storage::url($candidat->affiche) }}" alt="Affiche de campagne" class="rounded-xl shadow">
+                    <img src="{{ $affiche }}" alt="Affiche de campagne" class="rounded-xl shadow">
                 </div>
             @endif
 

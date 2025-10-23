@@ -201,7 +201,7 @@
                             <p class="text-sm text-gray-500 italic mb-3">
                                 Publié le {{ $communique->published_at->format('d M Y') }}
                             </p>
-                            <a href="" target="_blank"
+                            <a href="{{ asset('communique/' . $communique->id . '.pdf') }}" target="_blank"
                                 class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-green-300 transition">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-3 h-3 mr-2"
                                     viewBox="0 0 16 16">
