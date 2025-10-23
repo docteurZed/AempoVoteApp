@@ -128,6 +128,16 @@
                             @endphp
                             <div class="w-full max-w-sm bg-gray-800/20 border rounded-xl shadow-sm border-gray-800 p-4">
                                 <div class="flex flex-col items-center pb-10">
+                                    @php
+                                        $photo = '';
+                                        $basePath = public_path($candidat->user->student_number);
+
+                                        if (file_exists($basePath . '.jpg')) {
+                                            $photo = 'candidatFile/photo' . $candidat->user->student_number . '.jpg';
+                                        } elseif (file_exists($basePath . '.png')) {
+                                            $photo = 'candidatFile/photo' . $candidat->user->student_number . '.png';
+                                        }
+                                    @endphp
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg border border-2 border-green-700"
                                         src="{{ $candidat->photo ? Storage::url($candidat->photo) : asset('img/profil.jpg') }}"
                                         alt="image" />
