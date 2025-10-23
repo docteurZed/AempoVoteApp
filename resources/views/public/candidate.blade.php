@@ -143,7 +143,6 @@
                                             }
                                         }
                                     @endphp
-                                    <span>{{ $photo }}</span>
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg border border-2 border-green-700"
                                         src="{{ $candidat->photo ? $photo : asset('img/profil.jpg') }}" alt="image" />
                                     <h5 class="mb-1 text-xl font-bold text-white text-center">
